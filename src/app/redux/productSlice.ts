@@ -7,6 +7,9 @@ interface Product {
    description: string;
    category: string;
    image: string;
+   sizes: [];
+   discount: number;
+   inStock: boolean;
 }
 
 interface ProductsState {

@@ -39,10 +39,10 @@ export default function ProductFilters({categories} : FitlerProps) {
           id="category"
           name="category"
           className="w-full border bg-gray-900 border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          defaultValue=""
+          value={filter.category ? filter.category : 'all'}
           onChange={(e) => handleChangeCategory(e.target.value)}
         >
-          <option value="" selected={filter.category ? false : true}>All categories</option>
+          <option value="all">All categories</option>
           {categories ? categories.map((category, i) => <option key={i} value={category}>{category}</option>) : <option disabled>No categories found</option>}
         </select>
       </div>
