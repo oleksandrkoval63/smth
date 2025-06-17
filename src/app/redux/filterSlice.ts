@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface Filter {
    price?: number,
    category?: string,
+   isChecked?: boolean
 }
 
 interface FilterState {

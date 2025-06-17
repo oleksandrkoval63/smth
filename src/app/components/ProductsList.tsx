@@ -17,7 +17,8 @@ export default function ProductsList() {
    const filteredProducts = products.filter((product) => {
     const matchCategory = filters.category ? filters.category === product.category : true;
     const matchPrice = filters.price ? filters.price >= product.price : true;
-    return matchPrice && matchCategory
+    const matchStock = filters.isChecked ? filters.isChecked === product.inStock : true;
+    return matchPrice && matchCategory && matchStock
    })
 
    const sorted = useMemo(() => sortProducts(filteredProducts, sorting.sorting as SortKey), [filteredProducts, sorting]) 
