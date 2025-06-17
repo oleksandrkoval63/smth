@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Product {
+export interface Product {
    id: number;
    title: string;
    price: number;
@@ -8,6 +8,7 @@ interface Product {
    category: string;
    image: string;
    sizes: [];
+   status: string;
    discount: number;
    inStock: boolean;
 }

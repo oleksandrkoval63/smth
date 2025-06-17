@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Filter {
    price?: number,
-   category?: string;
+   category?: string,
 }
 
 interface FilterState {

@@ -1,4 +1,4 @@
-// components/ProductFilters.tsx
+'use client'
 import React, { useState } from 'react';
 import { AppDispatch } from '../redux/store';
 import { useDispatch } from 'react-redux';

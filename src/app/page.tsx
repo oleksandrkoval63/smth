@@ -6,14 +6,17 @@ import { useDispatch,  } from "react-redux"
 import { AppDispatch,  } from "./redux/store"
 import fetchProducts from "./api/fetchProducts"
 import { setProducts } from "./redux/productSlice"
+import { addingSort } from './utils/addingSort';
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>()
      useEffect(() => {
         const fetchedProducts = async () => {
-           const result = await fetchProducts()
-           if(result){
-              dispatch(setProducts(result))
+           const products = await fetchProducts()
+           if(products){
+            console.log(products)
+              const rebuildProducts = addingSort(products)
+              dispatch(setProducts(rebuildProducts))
            }
         }
         fetchedProducts()

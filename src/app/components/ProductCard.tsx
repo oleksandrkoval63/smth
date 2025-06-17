@@ -11,15 +11,18 @@ type ProductCardProps = {
   sizes: [],
   discount: number;
   inStock: boolean;
+  view?: string;
 };
 
-export default function ProductCard({id, title, price, image, description, category, inStock, discount }: ProductCardProps) {
+export default function ProductCard({id, title, price, image, description, category, inStock, discount, view }: ProductCardProps) {
+  
+
   return (
-    <Link href={`/products/${id}`} className={`relative flex flex-col w-[350px] overflow-hidden rounded-lg border shadow transition-shadow duration-300 hover:shadow-lg ${!inStock && 'pointer-events-none'}`}>
+    <Link href={`/products/${id}`} className={`relative flex ${view === 'grid' ? 'w-[350px] flex-col' : 'w-full'} overflow-hidden rounded-lg border shadow transition-shadow duration-300 hover:shadow-lg ${!inStock && 'pointer-events-none'}`}>
       {!inStock && (
         <span className="absolute inset-0 z-10 bg-gray-400/30 backdrop-blur-sm" />
       )}
-      <Image width={350} height={450} src={image} alt={title} className="w-full h-48 object-cover" />
+      <Image width={view === 'grid' ? 350 : 150} height={view === 'grid' ? 450 : 150} src={image} alt={title} className={`${view === 'grid' ? 'w-full' : ''} h-48 object-cover`} />
       <div className="p-4 flex flex-col flex-1">
         <span className={`${inStock ? 'text-green-600' : 'text-red-600'}`}>{inStock ? 'available' : 'unavailable' }</span>
         <h3 className="font-semibold text-lg mb-2">{title}</h3>
