@@ -47,7 +47,7 @@ export default function ProductPage() {
     <div className="container mx-auto px-6 py-12">
       <div className="flex flex-col lg:flex-row items-center space-x-8">
         <div className="w-full lg:w-1/2">
-          <Image width={350} height={450} src={product?.image || "/public/next.svg"} alt={product?.title || "product title"}
+          <Image width={450} height={550} src={product?.image || "/public/next.svg"} alt={product?.title || "product title"}
             className="w-full h-96 object-cover rounded-lg shadow-lg"
           />
         </div>

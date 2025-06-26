@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { setSort, setViewState } from '../redux/sortSlice';
 import { SortKey } from '../utils/sortProducts';
+import ProductSearch from './productSearch';
 
 
 type CatalogHeaderProps = {
@@ -31,13 +32,16 @@ export default function CatalogHeader({count}: CatalogHeaderProps) {
   }, [sorting, dispatch, view])
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4">
+    <div className="flex flex-wrap items-center  gap-4">
       <p className="text-sm">
         Підібрано: <span className="font-semibold">{count} товарів</span>
       </p>
-      <div className='flex gap-8 items-center'>
-         <SortDropdown value={sorting} onChange={handleChangeSort} />
-         <ViewToggle mode={view} onToggle={handleChangeView} />
+      <div className='flex gap-8 items-center w-full justify-between'>
+         <ProductSearch />
+         <div className='flex items-center gap-4'>
+            <SortDropdown value={sorting} onChange={handleChangeSort} />
+            <ViewToggle mode={view} onToggle={handleChangeView} />
+         </div>
       </div>
     </div>
   );

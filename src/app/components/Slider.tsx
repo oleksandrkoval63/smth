@@ -7,13 +7,14 @@ import  {Navigation}  from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductCard from './ProductCard';
+import { Product } from '../redux/productSlice';
 
 type similarCategory = {
    category: string | undefined
 }
 
 export default function Slider({category}: similarCategory) {
-   const products = useSelector((state: RootState) => state.products.products)
+   const products = useSelector<RootState, Product[]>((state) => state.products.products)
    const filteredSimilar = products.filter((product) => product.category === category)
 
   return (

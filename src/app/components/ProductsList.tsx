@@ -6,19 +6,22 @@ import ProductCard from './ProductCard';
 import Filter from './Filter'
 import CatalogHeader from "./CatalogHeader";
 import { SortKey, sortProducts } from "../utils/sortProducts";
+import { Product } from "../redux/productSlice";
 
 
 export default function ProductsList() {
-   const products = useSelector((state: RootState) => state.products.products)
+   const products = useSelector<RootState, Product[]>((state) => state.products.products)
    const filters = useSelector((state: RootState) => state.filters.currentFilter)
    const sorting = useSelector((state: RootState) => state.sorts)
+   const searchResult = useSelector((state: RootState) => state.search.query)
 
    const categories = Array.from(new Set(products.map(p => p.category)));
    const filteredProducts = products.filter((product) => {
     const matchCategory = filters.category ? filters.category === product.category : true;
     const matchPrice = filters.price ? filters.price >= product.price : true;
     const matchStock = filters.isChecked ? filters.isChecked === product.inStock : true;
-    return matchPrice && matchCategory && matchStock
+    const matchSearch = searchResult ? product.title.toLowerCase().includes(searchResult.toLowerCase()) : true;
+    return matchPrice && matchCategory && matchStock && matchSearch;
    })
 
    const sorted = useMemo(() => sortProducts(filteredProducts, sorting.sorting as SortKey), [filteredProducts, sorting]) 
