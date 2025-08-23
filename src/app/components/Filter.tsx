@@ -34,11 +34,11 @@ export default function ProductFilters({categories} : FitlerProps) {
    }
   return (
     <section className="p-4 rounded-md shadow-md max-w-md mx-auto">
-      <h2 className="text-xl font-semibold mb-4">Фільтри товарів</h2>
+      <h2 className="text-xl font-semibold mb-4">Filters of goods</h2>
 
       <div className="mb-6">
         <label htmlFor="category" className="block mb-2 font-medium">
-          Категорія
+          Categories
         </label>
         <select
           id="category"
@@ -54,7 +54,7 @@ export default function ProductFilters({categories} : FitlerProps) {
 
       <div className="mb-6">
         <label htmlFor="price" className="block mb-2 font-medium">
-          Максимальна ціна
+          Max price
         </label>
         <input
           type="number"
@@ -92,7 +92,7 @@ export default function ProductFilters({categories} : FitlerProps) {
           <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <span className="text-sm font-medium text-gray-200">
-          Показати лише <span className="text-green-400">доступні</span>
+          Show only <span className="text-green-400">available</span>
         </span>
       </label>
       <button
@@ -100,14 +100,14 @@ export default function ProductFilters({categories} : FitlerProps) {
         className="w-full cursor-pointer bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition-colors mb-2.5"
         onClick={() => dispatch(setFilter({category:filter.category, price:filter.price, isChecked: filter.isChecked}))}
       >
-        Застосувати
+        Submit
       </button>
       <button
         type="button"
         className="w-full cursor-pointer bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition-colors "
         onClick={() => handleResetFilters()}
       >
-        Очистити фільтрацію
+        Clear filters
       </button>
     </section>
   );

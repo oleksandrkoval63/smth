@@ -1,19 +1,28 @@
 import { useMemo } from "react";
-import {useSelector } from "react-redux"
+import {useDispatch, useSelector } from "react-redux"
 
-import {  RootState } from "../redux/store"
+import {  AppDispatch, RootState } from "../redux/store"
 import ProductCard from './ProductCard';
 import Filter from './Filter'
 import CatalogHeader from "./CatalogHeader";
 import { SortKey, sortProducts } from "../utils/sortProducts";
 import { Product } from "../redux/productSlice";
+import { addProductCart } from "../redux/cartSlice";
 
 
 export default function ProductsList() {
+  const dispatch = useDispatch<AppDispatch>()
+
    const products = useSelector<RootState, Product[]>((state) => state.products.products)
    const filters = useSelector((state: RootState) => state.filters.currentFilter)
    const sorting = useSelector((state: RootState) => state.sorts)
    const searchResult = useSelector((state: RootState) => state.search.query)
+
+   const handleDispatchProduct = (id: number, e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const cardProduct = products.filter((p) => p.id === id)
+    dispatch(addProductCart(cardProduct[0]))
+   }
 
    const categories = Array.from(new Set(products.map(p => p.category)));
    const filteredProducts = products.filter((product) => {
@@ -38,7 +47,7 @@ export default function ProductsList() {
         </header>
 
         <div className={sorting.view === 'grid' ? 'grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3' : 'flex flex-col gap-2'}>
-          {sorted.map((p) => (<ProductCard key={p.id} {...p} view={sorting.view}/>))}
+          {sorted.map((p) => (<ProductCard key={p.id} {...p} view={sorting.view} onClick={handleDispatchProduct}/>))}
         </div>
       </div>
     </section>

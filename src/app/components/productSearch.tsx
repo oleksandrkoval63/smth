@@ -22,7 +22,7 @@ export default function ProductSearch() {
     >
       <input
         type="text"
-        placeholder="Пошук товарів…"
+        placeholder="Search your fashion…"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         autoComplete="off"

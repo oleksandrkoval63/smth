@@ -11,18 +11,20 @@ import productsReducer from './productSlice'
 import filterReducer from './filterSlice'
 import sortReducer from './sortSlice'
 import searchReducer from './searchSlice'
+import cartReducer from './cartSlice'
 
 const rootReducer = combineReducers({
    products: productsReducer,
    filters: filterReducer,
    sorts: sortReducer,
    search: searchReducer,
+   cart: cartReducer,
 })
 
 const persistConfig = {
    key: 'root',
    storage,
-   whitelist: ['products']
+   whitelist: ['products', 'cart']
 }
 
 export const store = configureStore({

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MiniCart from "./MiniCart";
 
 export default function Header() {
   return (
@@ -7,11 +8,12 @@ export default function Header() {
         <Link href='/'><h1 className="text-2xl font-bold">My Shop</h1></Link>
         <nav>
           <ul className="flex space-x-6">
-            <li><Link href='/' className="hover:text-yellow-400">Головна</Link></li>
-            <li><Link href="/products" className="hover:text-yellow-400">Каталог</Link></li>
-            <li><a href="#" className="hover:text-yellow-400">Контакти</a></li>
+            <li><Link href='/' className="hover:text-yellow-400">Home</Link></li>
+            <li><Link href="/products" className="hover:text-yellow-400">Catalog</Link></li>
+            <li><a href="#" className="hover:text-yellow-400">Contacts</a></li>
           </ul>
         </nav>
+        <MiniCart/>
       </div>
     </header>
   );

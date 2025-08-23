@@ -34,7 +34,7 @@ export default function CatalogHeader({count}: CatalogHeaderProps) {
   return (
     <div className="flex flex-wrap items-center  gap-4">
       <p className="text-sm">
-        Підібрано: <span className="font-semibold">{count} товарів</span>
+        Selected: <span className="font-semibold">{count} goods</span>
       </p>
       <div className='flex gap-8 items-center w-full justify-between'>
          <ProductSearch />
